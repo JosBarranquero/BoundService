@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private BoundService mBoundService;
-    private boolean mServiceBound;
+    private boolean mServiceBound = false;
     private Button btnPrintTime, btnStop;
     private TextView txvTime;
 

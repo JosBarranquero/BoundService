@@ -9,9 +9,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Chronometer;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * Created by usuario on 17/02/17
  * BoundService
@@ -53,9 +50,15 @@ public class BoundService extends Service {
 
     public String getTimeStamp() {
         long elapsedMillis = SystemClock.elapsedRealtime() - mChrono.getBase();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:MM:ss");
+        /*SimpleDateFormat dateFormat = new SimpleDateFormat("hh:MM:ss");
 
-        return dateFormat.format(new Date(elapsedMillis));
+        return dateFormat.format(new Date(elapsedMillis));*/
+        int hours = (int) (elapsedMillis / 3600000);
+        int minutes = (int) (elapsedMillis - hours * 3600000) / 60000;
+        int seconds = (int) (elapsedMillis - hours * 3600000 - minutes * 60000) / 1000;
+        int millis = (int) (elapsedMillis - hours * 3600000 - minutes * 60000 - seconds * 1000);
+
+        return hours + ":" + minutes + ":" + seconds + ":" + millis;
     }
 
     @Override
